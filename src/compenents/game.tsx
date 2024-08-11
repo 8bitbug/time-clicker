@@ -1,5 +1,5 @@
 import Clock from './clock';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 function Game() {
     const savedGame = JSON.parse(localStorage.getItem('savedGame') || '{}');
