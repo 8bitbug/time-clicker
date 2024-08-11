@@ -93,15 +93,10 @@ function clock() {
     }
   }
 
-  /*const drawHands = (ctx: CanvasRenderingContext2D) => {
-    
-  }*/
-
   const drawClock = (canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D) => {
     // https://www.w3schools.com/graphics/canvas_clock.asp
     drawFace(canvas, ctx);
     drawNumbers(ctx);
-    drawHands(ctx);
   }
 
   useEffect(() => {
