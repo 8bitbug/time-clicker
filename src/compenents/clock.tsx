@@ -18,6 +18,15 @@ function clock() {
       x: canvasProperties.height / 2,
       y: canvasProperties.width / 2,
       radius: 10,
+    },
+
+    // For the arms of the clock
+    arm: {
+      x: canvasProperties.height / 2,
+      y: canvasProperties.width / 2,
+      Linewidth: 5,
+      height: (canvasProperties.height / 2),
+      width: 10,
     }
   });
 
@@ -37,6 +46,37 @@ function clock() {
     ctx.closePath();
   }
 
+  const convertToRomanNumerals = (num: number): string => {
+    switch (num) {
+      case 1:
+        return 'I'
+      case 2:
+        return 'II'
+      case 3:
+        return 'III'
+      case 4:
+        return 'IV'
+      case 5:
+        return 'V'
+      case 6:
+        return 'VI'
+      case 7:
+        return 'VII'
+      case 8:
+        return 'VIII'
+      case 9:
+        return 'IX'
+      case 10:
+        return 'X'
+      case 11:
+        return 'XI'
+      case 12:
+        return 'XII'
+      default:
+        return ''
+    }
+  }
+
   
   const drawNumbers = (ctx: CanvasRenderingContext2D) => {
     const radius = clock.radius * 0.825;
@@ -49,14 +89,19 @@ function clock() {
         const angle = num * 30 * (Math.PI / 180);
         const x = clock.center.x + radius * Math.cos(angle - Math.PI / 2);
         const y = clock.center.y + radius * Math.sin(angle - Math.PI / 2);
-        ctx.fillText(num.toString(), x, y);
+        ctx.fillText(convertToRomanNumerals(num), x, y);
     }
   }
+
+  /*const drawHands = (ctx: CanvasRenderingContext2D) => {
+    
+  }*/
 
   const drawClock = (canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D) => {
     // https://www.w3schools.com/graphics/canvas_clock.asp
     drawFace(canvas, ctx);
     drawNumbers(ctx);
+    drawHands(ctx);
   }
 
   useEffect(() => {
