@@ -1,10 +1,9 @@
-import React from "react";
-import Draw from './compenents/clock';
+import Game from './compenents/game';
 
 function App() {
   
   return (
-    <Draw />
+    <Game />
   )
 }
 
