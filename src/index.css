@@ -1,0 +1,8 @@
+:root {
+  --first: white;
+  --secondary: black;
+}
+
+body {
+  background-color: var(--first);
+}
