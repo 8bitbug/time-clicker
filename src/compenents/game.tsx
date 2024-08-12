@@ -72,7 +72,7 @@ function Game(): JSX.Element {
         );
     };
 
-    const renderTime = (): JSX.Element => {
+    const renderTime = () => {
         switch (true) {
             case game.second <= 60: // Seconds
                 return (
