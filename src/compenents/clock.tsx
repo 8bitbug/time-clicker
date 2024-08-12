@@ -7,12 +7,12 @@ interface ClockProps {
   onClick: () => void;
 }
 
-function Clock({ second, minute, hour, onClick }: ClockProps) {
+function Clock({ second, minute, hour, onClick }: ClockProps): JSX.Element {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   const canvasProperties = {
-    height: 400,
-    width: 400,
+    height: 300, // 400
+    width: 300, // 400
   };
 
   const [clock, setClock] = useState({
@@ -45,7 +45,7 @@ function Clock({ second, minute, hour, onClick }: ClockProps) {
         x: canvasProperties.width / 2,
         y: canvasProperties.height / 2,
         lineWidth: 5,
-        height: (canvasProperties.height / 2) - 80,
+        height: (canvasProperties.height / 2) - 75, // 80
         width: 10,
         angle: 180 + (360 / hour) * 60
       }
@@ -72,8 +72,8 @@ function Clock({ second, minute, hour, onClick }: ClockProps) {
   }
 
   const drawNumbers = (ctx: CanvasRenderingContext2D) => {
-    const radius = clock.radius * 0.825;
-    ctx.font = clock.radius * 0.15 + "px 'Times New Roman'";
+    const radius = clock.radius * 0.8; // 0.825
+    ctx.font = clock.radius * 0.175 /* 0.15 */ + "px 'Times New Roman'";
     ctx.textBaseline = "middle";
     ctx.textAlign = "center";
 
@@ -148,11 +148,11 @@ function Clock({ second, minute, hour, onClick }: ClockProps) {
         },
         hour: {
           ...prevClock.arm.hour,
-          angle: 180 + (hour % 60) * 6
+          angle: 180 + (hour % 12) * 30
         }
       }
     }));
-  }, [second, minute, hour]);
+  }, [second]);
 
   useEffect(() => {
     const canvas: HTMLCanvasElement | null = canvasRef.current;
@@ -176,6 +176,7 @@ function Clock({ second, minute, hour, onClick }: ClockProps) {
         transform: "translate(-50%, -50%)",
         cursor: "pointer",
         borderRadius: "50%",
+        userSelect: "none",
       }} 
       onClick={onClick}
     />

@@ -1,6 +1,6 @@
 import Game from './compenents/game';
 
-function App() {
+function App(): JSX.Element {
   
   return (
     <Game />
