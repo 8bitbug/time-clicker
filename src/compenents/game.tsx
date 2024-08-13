@@ -54,7 +54,6 @@ function Game(): JSX.Element {
 
     const save = (updatedGame: { second: number; minute: number; hour: number }) => {
         localStorage.setItem('savedGame', JSON.stringify(updatedGame));
-        localStorage.clear()
     };
 
     interface DisplayTimeProps {
